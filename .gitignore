@@ -4,6 +4,7 @@
 /var/
 /var/log
 /vendor/
+/node_modules/
 .env
 ###> symfony/framework-bundle ###
 /.env.local

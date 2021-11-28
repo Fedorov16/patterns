@@ -1,17 +1,14 @@
-# empty project for code
+# Project for learning php patterns
 
 ### Install project
 ```
-
 make build
-
 
 ```
 ### Up project
 
 ```
 make up
-
 ```
 
 ### down project
