@@ -16,7 +16,7 @@ _down:
 	docker-compose down
 
 _in:
-	docker exec -it bye bash
+	docker exec -it patterns bash
 
 _yarn:
 	cd code && yarn install

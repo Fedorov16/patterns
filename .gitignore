@@ -1,0 +1,14 @@
+.idea
+.env.local.php
+.env.*.local
+/var/
+/var/log
+/vendor/
+.env
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+###< symfony/framework-bundle ###
