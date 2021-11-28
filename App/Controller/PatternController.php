@@ -9,7 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class PatternController
 {
     #[Route('/', name: 'index')]
-    public function index() {
+    public function index(): void
+    {
         echo 'project is ready for work';
     }
 }
