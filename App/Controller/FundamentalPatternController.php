@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Pattern\Fundamental\Delegation\MessengerBot;
+use App\Pattern\Fundamental\EventChannel\EventJob;
 use App\Pattern\Fundamental\PropertyContainer\Author;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -60,5 +61,13 @@ class FundamentalPatternController
             ->setSender('svfedorov16@gmail.com')
             ->setMessage('https://habr.com/ru/company/otus/blog/567710/');
         $messenger->send();
+    }
+
+    #[Route('/event_channel', name: 'event_channel')]
+    public function eventChanel(): void
+    {
+        InfoRender::showInfo('Event Channel', 'https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BD%D0%B0%D0%BB_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)');
+        $eventJob = new EventJob();
+        $eventJob->run();
     }
 }
