@@ -16,7 +16,7 @@ class CarFactory
         return match ($name) {
             'lada' => new Lada(),
             'bmw' => new Bmw(),
-            'ferrari' => new Ferrari(),
+            'ferrari' => (new Ferrari())->setColor('red'),
             default => throw new \Exception('There is no Car with name ' . $name),
         };
     }
