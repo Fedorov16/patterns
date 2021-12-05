@@ -34,7 +34,6 @@ $unsetElements = ['_controller', '_route'];
 $parameters = array_filter($matcherData, static function ($item) use ($unsetElements) {
     return !in_array($item, $unsetElements, true);
 }, ARRAY_FILTER_USE_KEY);
-$parameters = array_map('intval', $parameters);
 
 [$controllerName, $action] = explode('::', $matcherData['_controller']);
 $controller = new $controllerName;
