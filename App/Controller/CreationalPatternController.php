@@ -26,4 +26,11 @@ class CreationalPatternController
         $entity = CarStaticFactory::build($name);
         dump($entity);
     }
+
+    #[Route('/factory_method', name: 'factory_method')]
+    public function factoryMethod(): void
+    {
+        InfoRender::showInfo('Factory Method', 'https://refactoring.guru/ru/design-patterns/factory-method/php/example');
+
+    }
 }
