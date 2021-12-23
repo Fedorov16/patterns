@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Pattern\Creational\FactoryMethod\Factory\CarStaticFactory2;
 use App\Pattern\Creational\SimpleFactory\Factory\CarFactory;
 use App\Pattern\Creational\StaticFactory\Factory\CarStaticFactory;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreationalPatternController
 {
     #[Route('/simple_factory/{name}', name: 'simple_factory')]
-    public function simpleFactory($name): void
+    public function simpleFactory(string $name): void
     {
         InfoRender::showInfo('Simple Factory', 'https://refactoring.guru/ru/design-patterns/factory-comparison#:~:text=class-,UserFactory,-%7B%0A%20%20%20%20public%20static%20function');
         $carFactory = new CarFactory();
@@ -20,10 +21,19 @@ class CreationalPatternController
     }
 
     #[Route('/static_factory/{name}', name: 'static_factory')]
-    public function staticFactory($name): void
+    public function staticFactory(string $name): void
     {
         InfoRender::showInfo('Static Factory', 'https://designpatternsphp.readthedocs.io/ru/latest/Creational/StaticFactory/README.html');
         $entity = CarStaticFactory::build($name);
         dump($entity);
+    }
+
+    #[Route('/factory_method/{name}', name: 'factory_method')]
+    public function factoryMethod(string $name): void
+    {
+        InfoRender::showInfo('Factory Method', 'https://refactoring.guru/ru/design-patterns/factory-method/php/example');
+
+        $factory = CarStaticFactory2::build($name);
+        $factory->fixCar();
     }
 }
