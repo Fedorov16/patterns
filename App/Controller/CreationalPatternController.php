@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Pattern\Creational\AbstractFactory\AbstractCarFactory;
 use App\Pattern\Creational\FactoryMethod\Factory\CarStaticFactory2;
 use App\Pattern\Creational\SimpleFactory\Factory\CarFactory;
 use App\Pattern\Creational\StaticFactory\Factory\CarStaticFactory;
@@ -35,5 +36,15 @@ class CreationalPatternController
 
         $factory = CarStaticFactory2::build($name);
         $factory->fixCar();
+    }
+
+    #[Route('/abstract_factory/{name}', name: 'abstract_factory')]
+    public function abstractFactory(string $name): void
+    {
+        InfoRender::showInfo('Abstract Factory', 'https://refactoring.guru/ru/design-patterns/factory-method/php/example');
+        $factory = AbstractCarFactory::build($name);
+        $factory->makePrototype()->newIdea();
+        $factory->makeConstruct()->prototypeIdea();
+        $factory->makeCar()->constructCar();
     }
 }

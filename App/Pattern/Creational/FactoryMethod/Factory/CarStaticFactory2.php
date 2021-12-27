@@ -13,15 +13,11 @@ class CarStaticFactory2
 {
     public static function build(string $name): FixFactoryInterface
     {
-        switch ($name) {
-            case 'lada':
-                return (new Lada())->getFactory();
-            case 'bmw':
-                return (new Bmw())->getFactory();
-            case 'ferrari':
-                return (new Ferrari())->getFactory();
-            default:
-                throw new \Exception('There is no Car with name ' . $name);
-        }
+        return match ($name) {
+           'lada' => (new Lada())->getFactory(),
+            'bmw' => (new Bmw())->getFactory(),
+            'ferrari' => (new Ferrari())->getFactory(),
+            default => throw new \Exception('There is no Car with name ' . $name),
+        };
     }
 }
