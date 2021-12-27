@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Pattern\Creational\AbstractFactory\AbstractCarFactory;
 use App\Pattern\Creational\FactoryMethod\Factory\CarStaticFactory2;
+use App\Pattern\Creational\Multiton\CarAdvancedMultiton;
 use App\Pattern\Creational\SimpleFactory\Factory\CarFactory;
 use App\Pattern\Creational\SingleTon\CarAdvancedSingleton;
 use App\Pattern\Creational\SingleTon\CarSingleton;
@@ -61,5 +62,17 @@ class CreationalPatternController
         $carInstance3 = CarAdvancedSingleton::getInstance();
         $carInstance4 = CarAdvancedSingleton::getInstance();
         dump($carInstance3, $carInstance4, $carInstance3 === $carInstance4);
+    }
+
+    #[Route('/multiton', name: 'multiton')]
+    public function multiton(): void
+    {
+        InfoRender::showInfo('Multiton', 'https://maxsite.org/page/php-multiton');
+
+        $carInstance1 = CarAdvancedMultiton::getInstance('lada');
+        $carInstance2 = CarAdvancedMultiton::getInstance('bmw');
+        $carInstance3 = CarAdvancedMultiton::getInstance('lada');
+        $carInstance4 = CarAdvancedMultiton::getInstance('bmw');
+        dump($carInstance1, $carInstance2, $carInstance3, $carInstance4, $carInstance1 === $carInstance3);
     }
 }
