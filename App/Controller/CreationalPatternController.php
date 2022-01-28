@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Pattern\Creational\AbstractFactory\AbstractCarFactory;
+use App\Pattern\Creational\Builder\Car;
+use App\Pattern\Creational\Builder\CarBuilder;
+use App\Pattern\Creational\Builder\CarDirector;
 use App\Pattern\Creational\FactoryMethod\Factory\CarStaticFactory2;
 use App\Pattern\Creational\Multiton\CarAdvancedMultiton;
 use App\Pattern\Creational\SimpleFactory\Factory\CarFactory;
@@ -57,7 +60,7 @@ class CreationalPatternController
         InfoRender::showInfo('Singleton', 'https://refactoring.guru/ru/design-patterns/singleton/php/example');
         $carInstance1 = CarSingleton::getInstance();
         $carInstance2 = CarSingleton::getInstance();
-        dump($carInstance1, $carInstance2, $carInstance1 === $carInstance2 );
+        dump($carInstance1, $carInstance2, $carInstance1 === $carInstance2);
 
         $carInstance3 = CarAdvancedSingleton::getInstance();
         $carInstance4 = CarAdvancedSingleton::getInstance();
@@ -74,5 +77,43 @@ class CreationalPatternController
         $carInstance3 = CarAdvancedMultiton::getInstance('lada');
         $carInstance4 = CarAdvancedMultiton::getInstance('bmw');
         dump($carInstance1, $carInstance2, $carInstance3, $carInstance4, $carInstance1 === $carInstance3);
+    }
+
+    #[Route('/builder', name: 'builder')]
+    public function builder(): void
+    {
+        InfoRender::showInfo('Builder', 'https://refactoring.guru/ru/design-patterns/builder');
+//        $car1 = new Car(1, 'red', 'V8', [], true);
+        $car2 = new Car();
+        $car2
+            ->setModelNumber(1)
+            ->setColor('Blue')
+            ->setEngine('V8')
+            ->setExtraData([])
+            ->setIsPopular(true);
+
+        dump($car2);
+
+        $carBuilder = new CarBuilder();
+        $carBuilder
+            ->setModelNumber(9)
+            ->setColor('Blue')
+            ->setEngine('V8')
+            ->setExtraData([])
+            ->setIsPopular(true);
+
+        $car3 = $carBuilder->get();
+
+        dump($car3, $carBuilder);
+
+        $carDirector = new CarDirector(new CarBuilder());
+        $minCar = $carDirector->getMinimalCar();
+
+        dump($minCar);
+
+        $stableCar = $carDirector->getStableCar();
+        $stableCar->setColor('green');
+
+        dump($stableCar);
     }
 }

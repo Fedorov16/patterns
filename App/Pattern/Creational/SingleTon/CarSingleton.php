@@ -6,10 +6,10 @@ namespace App\Pattern\Creational\SingleTon;
 
 final class CarSingleton
 {
-    public static CarSingleton $instance;
+    private static CarSingleton $instance;
 
     public static function getInstance(): CarSingleton
     {
-        return static::$instance ?? static::$instance = new self();
+        return self::$instance ?? self::$instance = new self();
     }
 }

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Controller\ErrorController;
+use App\Controller\HeaderMenu;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Routing\AnnotatedRouteControllerLoader;
 use Symfony\Component\Config\FileLocator;
@@ -20,6 +21,9 @@ $loader = new AnnotationDirectoryLoader(
 $routes = $loader->load(__DIR__ . '/Controller/');
 $context = RequestContext::fromUri($_SERVER['REQUEST_URI']);
 $matcher = new UrlMatcher($routes, $context);
+
+HeaderMenu::render();
+
 try {
     $matcherData = $matcher->match($context->getBaseUrl());
 } catch (\Exception $e) {
