@@ -7,4 +7,5 @@ namespace App\Pattern\Creational\SingleTon;
 class CarAdvancedSingleton
 {
     use SingletonTrait;
+
 }

@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Pattern\Creational\AbstractFactory\CarFactory\Technic
-;
+namespace App\Pattern\Creational\AbstractFactory\CarFactory\Technic;
 
 class TechnicBmw implements TechnicInterface
 {

@@ -6,7 +6,7 @@ namespace App\Pattern\Creational\Multiton;
 
 trait MultitonTrait
 {
-    public static $instance = [];
+    private static array $instance = [];
 
     public static function getInstance(string $name)
     {

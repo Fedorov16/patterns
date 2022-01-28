@@ -1,0 +1,12 @@
+Fundamentional:
+  delegation: Delegation
+  property_container: Property Container
+  event_channel: Event Channel
+Creational:
+  simple_factory/bmw: Simple Factory
+  static_factory/bmw: Static Factory
+  factory_method/bmw: Factory Method
+  abstract_factory/bmw: Abstract Method
+  singleton: Singleton
+  multiton: Multiton
+  builder: Builder
