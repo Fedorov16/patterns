@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Pattern\Creational\AbstractFactory\AbstractCarFactory;
 use App\Pattern\Creational\Builder\Car;
+use App\Pattern\Creational\Prototype\Car as ProtoCar;
 use App\Pattern\Creational\Builder\CarBuilder;
 use App\Pattern\Creational\Builder\CarDirector;
 use App\Pattern\Creational\FactoryMethod\Factory\CarStaticFactory2;
@@ -115,5 +116,16 @@ class CreationalPatternController
         $stableCar->setColor('green');
 
         dump($stableCar);
+    }
+
+    #[Route('/prototype', name: 'prototype')]
+    public function prototype(): void
+    {
+        InfoRender::showInfo('Prototype', 'https://refactoring.guru/ru/design-patterns/prototype');
+        $car = ProtoCar::getFromDB();
+
+        $car2 = clone $car;
+        $car2->getReleaseDate()->setDate(2022, 06, 25);
+        dump($car, $car2);
     }
 }

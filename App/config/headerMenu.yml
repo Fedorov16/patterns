@@ -10,3 +10,4 @@ Creational:
   singleton: Singleton
   multiton: Multiton
   builder: Builder
+  prototype: Prototype
