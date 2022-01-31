@@ -6,9 +6,9 @@ namespace App\Pattern\Creational\SingleTon;
 
 trait SingletonTrait
 {
-    private static CarAdvancedSingleton|SingletonTrait $instance;
+    private static  $instance;
 
-    public static function getInstance(): SingletonTrait|CarAdvancedSingleton
+    public static function getInstance()
     {
         return static::$instance ?? static::$instance = new self();
     }
