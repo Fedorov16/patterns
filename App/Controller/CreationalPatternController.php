@@ -6,6 +6,10 @@ namespace App\Controller;
 
 use App\Pattern\Creational\AbstractFactory\AbstractCarFactory;
 use App\Pattern\Creational\Builder\Car;
+use App\Pattern\Creational\ObjectPull\Client;
+use App\Pattern\Creational\ObjectPull\Customer;
+use App\Pattern\Creational\ObjectPull\ObjectPull;
+use App\Pattern\Creational\ObjectPull\Support;
 use App\Pattern\Creational\Prototype\Car as ProtoCar;
 use App\Pattern\Creational\Builder\CarBuilder;
 use App\Pattern\Creational\Builder\CarDirector;
@@ -127,5 +131,46 @@ class CreationalPatternController
         $car2 = clone $car;
         $car2->getReleaseDate()->setDate(2022, 06, 25);
         dump($car, $car2);
+    }
+
+    #[Route('/object_pull', name: 'object_pull')]
+    public function objectPull(): void
+    {
+        InfoRender::showInfo('Object Pull', 'https://designpatternsphp.readthedocs.io/ru/latest/Creational/Pool/README.html');
+        $objectPull = ObjectPull::getInstance();
+
+        $objectPull
+            ->addObject(new Customer())
+            ->addObject(new Client())
+            ->addObject(new Support())
+            ;
+        dump($objectPull);
+
+        $customer = $objectPull->getObject(Customer::class);
+        $customer
+            ?->setPhone(12345)
+            ->setName('Customer1');
+
+        $client = $objectPull->getObject(Client::class);
+
+        $client
+            ?->setOrderNumber(1)
+            ->setName('Client1')
+            ->setEmail('client1@gmail.com');
+
+        $support = $objectPull->getObject(Support::class);
+        $support2 = $objectPull->getObject(Support::class);
+
+        $support
+            ?->setSupportNumber(111)
+            ->setName('Support1');
+
+        $support2?->setSupportNumber(222)
+            ->setName('Support2');
+
+        dump($objectPull);
+
+        $objectPull->clear($support);
+        dump($objectPull);
     }
 }

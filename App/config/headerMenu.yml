@@ -11,3 +11,4 @@ Creational:
   multiton: Multiton
   builder: Builder
   prototype: Prototype
+  object_pull: Object Pull
