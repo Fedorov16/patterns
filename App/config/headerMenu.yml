@@ -12,3 +12,7 @@ Creational:
   builder: Builder
   prototype: Prototype
   object_pull: Object Pull
+Structural:
+  adapter: Adapter
+Behavioral:
+  strategy/easy: Strategy
