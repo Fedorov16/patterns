@@ -5,6 +5,7 @@ in: _in
 yarn: _yarn
 watch: _watch
 prod: _prod
+tests: _tests
 
 _build:
 	docker-compose build && docker-compose up -d && docker exec -it patterns composer install && yarn install
@@ -26,3 +27,6 @@ _watch:
 
 _prod:
 	cd code && yarn encore production
+
+_tests:
+	docker exec -it patterns vendor/bin/phpunit -v ./tests/
