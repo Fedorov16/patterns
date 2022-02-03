@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Patterns;
+namespace Unit;
 
 use App\Pattern\Creational\SimpleFactory\Bmw;
 use App\Pattern\Creational\SimpleFactory\CarInterface;

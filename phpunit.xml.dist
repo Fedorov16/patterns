@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+        backupGlobals="false"
+        backupStaticAttributes="false"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        processIsolation="false"
+        stopOnFailure="false"
+        bootstrap="app/bootstrap.php"
+        colors="true"
+        verbose="true"
+>
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <exclude>
+      <directory prefix=".phpstorm.meta">src</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Only unit">
+      <directory>tests/Unit</directory>
+    </testsuite>
+    <testsuite name="All">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <ini name="memory_limit" value="2024M"/>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
+    <server name="KERNEL_DIR" value="app/"/>
+    <env name="KERNEL_CLASS" value="AppKernel"/>
+    <server name="APP_ENV" value="test" force="true"/>
+<!--    <env name="OAUTH2_PRIVATE_KEY" value="/var/www/adp/tests/Fixtures/private.key"/>-->
+  </php>
+  <extensions>
+    <extension class="Tests\PHPUnit\Extension\TimeMeasureExtension" />
+  </extensions>
+</phpunit>
