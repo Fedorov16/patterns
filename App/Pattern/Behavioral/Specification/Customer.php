@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Pattern\Behavioral\Specification;
 
+use App\Pattern\Behavioral\Specification\Specification\CompositeSpecification;
+
 class Customer
 {
     private int $customerAge;

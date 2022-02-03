@@ -8,6 +8,7 @@ use App\Pattern\Behavioral\Specification\Customer;
 use App\Pattern\Behavioral\Specification\CustomerCountry;
 use App\Pattern\Behavioral\Specification\CustomerIsMatch;
 use App\Pattern\Behavioral\Specification\CustomerLevel;
+use App\Pattern\Behavioral\Specification\Specification\AndSpecification;
 use App\Pattern\Behavioral\Strategy\GameSetting;
 use App\Pattern\Behavioral\Strategy\StrategyFactory;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,7 +48,7 @@ class BehavioralPatternController
 //        }
         //3 decision Specification
         $customerIsMatch = new CustomerIsMatch();
-
+//
         if ($customerIsMatch->isSatisfiedBy($customer))
         {
             $customer->setMatchLevel(true);
