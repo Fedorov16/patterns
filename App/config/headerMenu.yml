@@ -16,5 +16,4 @@ Structural:
   adapter: Adapter
 Behavioral:
   strategy/easy: Strategy
-Extra:
   specification: Specification

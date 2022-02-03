@@ -1,6 +1,7 @@
 .idea
 .env.local.php
 .env.*.local
+.phpunit.result.cache
 /var/
 /var/log
 /vendor/
