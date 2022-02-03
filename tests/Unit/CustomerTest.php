@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 class CustomerTest extends TestCase
 {
+    private const IS_SATISFIED = true;
+    private const IS_NOT_SATISFIED = false;
+
     public function testIsSatisfiedByLevelBySimpleWay(): void
     {
         $customer = new Customer();
@@ -23,7 +26,7 @@ class CustomerTest extends TestCase
             && in_array($customer->getCustomerLevel(), [CustomerLevel::GREEN, CustomerLevel::RED, CustomerLevel::BLACK], true)
             && in_array($customer->getCustomerCountry(), [CustomerCountry::RUSSIA, CustomerCountry::FINLAND], true);
 
-        $this->assertEquals(true, $isMatch);
+        $this->assertEquals(self::IS_SATISFIED, $isMatch);
     }
 
     public function testIsSatisfiedByLevelByNormallyWay(): void
@@ -33,7 +36,7 @@ class CustomerTest extends TestCase
         $customer->setCustomerCountry(CustomerCountry::RUSSIA);
         $customer->setCustomerAge(18);
 
-        $this->assertEquals(true, $customer->isMatchCustomerLevel());
+        $this->assertEquals(self::IS_SATISFIED, $customer->isMatchCustomerLevel());
     }
 
     public function testIsSatisfiedByLevelByExpertWay(): void
@@ -45,6 +48,18 @@ class CustomerTest extends TestCase
 
         $customerIsMatch = new CustomerIsMatch();
 
-        $this->assertEquals(true, $customerIsMatch->isSatisfiedBy($customer));
+        $this->assertEquals(self::IS_SATISFIED, $customerIsMatch->isSatisfiedBy($customer));
+    }
+
+    public function testIsNotSatisfiedByLevel(): void
+    {
+        $customer = new Customer();
+        $customer->setCustomerLevel(CustomerLevel::YELLOW);
+        $customer->setCustomerCountry(CustomerCountry::RUSSIA);
+        $customer->setCustomerAge(18);
+
+        $customerIsMatch = new CustomerIsMatch();
+
+        $this->assertEquals(self::IS_NOT_SATISFIED, $customerIsMatch->isSatisfiedBy($customer));
     }
 }
