@@ -12,6 +12,6 @@ class XmlCustomResponse
     {
         $data = ExampleResponse::get();
 
-        return ArrayToXml::convert($data);
+        return ArrayToXml::convert($data, '', true, 'UTF-8');
     }
 }
