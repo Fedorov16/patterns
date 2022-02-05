@@ -8,11 +8,11 @@ class ImageLibraryThirdParty implements ImageLibraryThirdPartyInterface
 {
     public function uploadImage(string $path): string
     {
-        return (__METHOD__);
+        return __METHOD__;
     }
 
     public function getImage(string $fileCode): string
     {
-        return (__METHOD__);
+        return __METHOD__;
     }
 }

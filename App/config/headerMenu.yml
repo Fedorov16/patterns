@@ -17,3 +17,4 @@ Structural:
 Behavioral:
   strategy/easy: Strategy
   specification: Specification
+  facade: Facade

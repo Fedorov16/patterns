@@ -8,11 +8,11 @@ class ImageLibrary implements ImageLibraryInterface
 {
     public function upload(string $path): string
     {
-        return(__METHOD__);
+        return __METHOD__;
     }
 
     public function get(string $fileCode): string
     {
-        return(__METHOD__);
+        return __METHOD__;
     }
 }
