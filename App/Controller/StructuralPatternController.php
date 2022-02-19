@@ -8,6 +8,8 @@ use App\Pattern\Structural\Adapter\Package\ImageLibraryAdapter;
 use App\Pattern\Structural\Adapter\Response\JsonCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlJsonCustomResponseAdapter;
+use App\Pattern\Structural\Bridge\WithBridge\WithBridge;
+use App\Pattern\Structural\Bridge\WithNoBridge\WithoutBridge;
 use App\Pattern\Structural\Facade\MediaFacade;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -44,5 +46,17 @@ class StructuralPatternController
 
         $media->editImage('nameOfImage2');
         dump('UPDATED ' . $media->getImage());
+    }
+
+    #[Route('/bridge', name: 'bridge')]
+    public function bridge(): void
+    {
+        InfoRender::showInfo('Bridge', 'https://refactoring.guru/ru/design-patterns/bridge');
+
+        $withoutBridge = new WithoutBridge();
+        $withoutBridge->run();
+
+        $bridge = new WithBridge();
+        $bridge->run();
     }
 }

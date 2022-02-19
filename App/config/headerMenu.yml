@@ -14,7 +14,9 @@ Creational:
   object_pull: Object Pull
 Structural:
   adapter: Adapter
+  facade: Facade
+  bridge: Bridge
 Behavioral:
   strategy/easy: Strategy
   specification: Specification
-  facade: Facade
+
