@@ -59,4 +59,10 @@ class StructuralPatternController
         $bridge = new WithBridge();
         $bridge->run();
     }
+
+    #[Route('/composite', name: 'composite')]
+    public function composite(): void
+    {
+        InfoRender::showInfo('Composite', 'https://refactoring.guru/ru/design-patterns/composite');
+    }
 }

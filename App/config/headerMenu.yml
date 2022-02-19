@@ -16,6 +16,7 @@ Structural:
   adapter: Adapter
   facade: Facade
   bridge: Bridge
+  composite: Composite
 Behavioral:
   strategy/easy: Strategy
   specification: Specification
