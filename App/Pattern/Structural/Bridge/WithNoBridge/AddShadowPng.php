@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Bridge\WithNoBridge;
 
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Png;
-
 class AddShadowPng extends ImageAbstract
 {
-    public function __construct(
-        private readonly Png $png,
-    ) {}
-
-    protected function prepare(): void
+    public function run(): void
     {
-        $this->png->setName('PngWithShadow');
-        dump($this->png->getName());
+        $shadowColor = '#eaeaea';
+        $this->shadowPngLogic($shadowColor);
+
+        $this->doCommonLogic();
+    }
+
+    private function shadowPngLogic(string $shadowColor): void
+    {
+        //При добавлении теней для Png имеется много собственной логики
+        $this->image->setShadowColor($shadowColor);
     }
 }

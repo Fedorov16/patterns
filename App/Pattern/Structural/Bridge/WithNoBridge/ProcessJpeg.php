@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Bridge\WithNoBridge;
 
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Jpeg;
-
 class ProcessJpeg extends ImageAbstract
 {
-    public function __construct(
-        private readonly Jpeg $jpeg,
-    ) {}
+    private const PERCENT_OF_PROCESS = 30;
+    private const EXTRA_IMPROVE_PERCENT = 10;
 
-    protected function prepare(): void
+    public function run(): void
     {
-        $this->jpeg->setName('ProcessJpeg');
-        dump($this->jpeg->getName());
+        $this->processJpegLogic();
+
+        $this->doCommonLogic();
+    }
+
+    private function processJpegLogic(): void
+    {
+        $newSize = (int)($this->image->getSize() - ($this->image->getSize() / 100) * (self::PERCENT_OF_PROCESS + self::EXTRA_IMPROVE_PERCENT));
+        $this->image->setSize($newSize);
     }
 }

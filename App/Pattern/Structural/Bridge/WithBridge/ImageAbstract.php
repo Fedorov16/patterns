@@ -2,25 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Pattern\Structural\Bridge\WithNoBridge;
-
-use App\Pattern\Structural\Bridge\Formats\ImageInterface;
+namespace App\Pattern\Structural\Bridge\WithBridge;
 
 abstract class ImageAbstract
 {
     public function __construct(
-        protected readonly ImageInterface $image,
+        private readonly RealizationInterface $realization
     ) {}
 
     abstract public function run();
+
+    public function getRealization(): RealizationInterface
+    {
+        return $this->realization;
+    }
 
     public function doCommonLogic(): void
     {
         dump(sprintf(
             'Class %s, ShadowColor: %s, Size: %d',
             get_class($this),
-            $this->image->getShadowColor(),
-            $this->image->getSize()
+            $this->realization->getShadowColor(),
+            $this->realization->getSize()
         ));
     }
 }

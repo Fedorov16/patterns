@@ -8,12 +8,7 @@ use App\Pattern\Structural\Adapter\Package\ImageLibraryAdapter;
 use App\Pattern\Structural\Adapter\Response\JsonCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlJsonCustomResponseAdapter;
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Jpeg;
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Png;
-use App\Pattern\Structural\Bridge\WithNoBridge\AddShadowJpeg;
-use App\Pattern\Structural\Bridge\WithNoBridge\AddShadowPng;
-use App\Pattern\Structural\Bridge\WithNoBridge\ProcessJpeg;
-use App\Pattern\Structural\Bridge\WithNoBridge\ProcessPng;
+use App\Pattern\Structural\Bridge\WithBridge\WithBridge;
 use App\Pattern\Structural\Bridge\WithNoBridge\WithoutBridge;
 use App\Pattern\Structural\Facade\MediaFacade;
 use Symfony\Component\Routing\Annotation\Route;
@@ -58,36 +53,10 @@ class StructuralPatternController
     {
         InfoRender::showInfo('Bridge', 'https://refactoring.guru/ru/design-patterns/bridge');
 
-        //No bridge examples
-        $jpeg = new Jpeg();
-        $jpeg
-            ->setName('image1')
-            ->setSize('4005');
+        $withoutBridge = new WithoutBridge();
+        $withoutBridge->run();
 
-        $addShadowJpeg = new AddShadowJpeg($jpeg);
-
-        $shadowier = new WithoutBridge($addShadowJpeg);
-        $shadowier->run();
-
-        $processJpeg = new ProcessJpeg($jpeg);
-
-        $handler = new WithoutBridge($processJpeg);
-        $handler->run();
-
-        $png = new Png();
-        $png
-            ->setName('image2')
-            ->setSize('900');
-
-        $addShadowJpeg = new AddShadowPng($png);
-
-        $shadowier = new WithoutBridge($addShadowJpeg);
-        $shadowier->run();
-
-        $processJpeg = new ProcessPng($png);
-
-        $handler = new WithoutBridge($processJpeg);
-        $handler->run();
-
+        $bridge = new WithBridge();
+        $bridge->run();
     }
 }

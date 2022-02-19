@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Bridge\WithNoBridge;
 
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Jpeg;
-
 class AddShadowJpeg extends ImageAbstract
 {
-    public function __construct(
-        private readonly Jpeg $jpeg,
-    ) {}
-
-    protected function prepare(): void
+    public function run(): void
     {
-        $this->jpeg->setName('JpegWithShadow');
-        dump($this->jpeg->getName());
+        $shadowColor = '#eaeaea';
+        $this->shadowJpegLogic($shadowColor);
+
+        $this->doCommonLogic();
+    }
+
+    private function shadowJpegLogic(string $shadowColor): void
+    {
+        //При добавлении теней для Jpeg имеется много собственной логики
+        $this->image->setShadowColor($shadowColor);
     }
 }

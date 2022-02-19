@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Bridge\WithNoBridge;
 
-use App\Pattern\Structural\Bridge\WithBridge\Formats\Png;
-
 class ProcessPng extends ImageAbstract
 {
-    public function __construct(
-        private readonly Png $png,
-    ) {}
+    private const PERCENT_OF_PROCESS = 50;
 
-    protected function prepare(): void
+    public function run(): void
     {
-        $this->png->setName('ProcessPng');
-        dump($this->png->getName());
+        $this->processPngLogic();
+
+        $this->doCommonLogic();
+    }
+
+    private function processPngLogic(): void
+    {
+        $newSize = (int)($this->image->getSize() - ($this->image->getSize() / 100) * self::PERCENT_OF_PROCESS);
+        $this->image->setSize($newSize);
     }
 }
