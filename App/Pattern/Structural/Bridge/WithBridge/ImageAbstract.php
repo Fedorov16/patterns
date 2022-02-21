@@ -7,15 +7,10 @@ namespace App\Pattern\Structural\Bridge\WithBridge;
 abstract class ImageAbstract
 {
     public function __construct(
-        private readonly RealizationInterface $realization
+        protected readonly RealizationInterface $realization
     ) {}
 
     abstract public function run();
-
-    public function getRealization(): RealizationInterface
-    {
-        return $this->realization;
-    }
 
     public function doCommonLogic(): void
     {

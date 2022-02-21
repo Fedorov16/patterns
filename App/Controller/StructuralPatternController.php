@@ -10,6 +10,7 @@ use App\Pattern\Structural\Adapter\Response\XmlCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlJsonCustomResponseAdapter;
 use App\Pattern\Structural\Bridge\WithBridge\WithBridge;
 use App\Pattern\Structural\Bridge\WithNoBridge\WithoutBridge;
+use App\Pattern\Structural\Composite\Composite;
 use App\Pattern\Structural\Facade\MediaFacade;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,5 +59,14 @@ class StructuralPatternController
 
         $bridge = new WithBridge();
         $bridge->run();
+    }
+
+    #[Route('/composite', name: 'composite')]
+    public function composite(): void
+    {
+        InfoRender::showInfo('Composite', 'https://refactoring.guru/ru/design-patterns/composite');
+
+        $composite = new Composite();
+        $composite->run();
     }
 }

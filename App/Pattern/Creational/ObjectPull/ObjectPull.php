@@ -48,7 +48,7 @@ class ObjectPull
     public function clear(ObjectPullInterface $object): void
     {
         $objectKey = $this->getObjectKey($object);
-        if (!in_array($objectKey, $this->clone, true)) {
+        if (array_key_exists($objectKey, $this->clone)) {
             unset($this->clone[$objectKey]);
         }
     }

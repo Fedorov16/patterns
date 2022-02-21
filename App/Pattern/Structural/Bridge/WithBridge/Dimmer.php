@@ -9,7 +9,7 @@ class Dimmer extends ImageAbstract
     public function run()
     {
         $shadowColor = '#eaeaea';
-        $this->getRealization()->setShadowColor($shadowColor);
+        $this->realization->setShadowColor($shadowColor);
         $this->doCommonLogic();
     }
 }

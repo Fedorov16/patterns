@@ -6,7 +6,7 @@ namespace App\Pattern\Creational\SingleTon;
 
 trait SingletonTrait
 {
-    private static  $instance;
+    private static $instance;
 
     public static function getInstance()
     {
