@@ -171,6 +171,7 @@ class CreationalPatternController
         dump($objectPull);
 
         $objectPull->clear($support);
+        $objectPull->clear($customer);
         dump($objectPull);
     }
 }

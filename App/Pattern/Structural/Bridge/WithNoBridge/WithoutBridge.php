@@ -12,6 +12,7 @@ class WithoutBridge
     public function run(): void
     {
         $jpeg = new Jpeg();
+
         $addShadowJpeg = new AddShadowJpeg($jpeg);
         $addShadowJpeg->run();
 

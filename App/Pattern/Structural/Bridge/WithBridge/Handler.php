@@ -8,7 +8,7 @@ class Handler extends ImageAbstract
 {
     public function run()
     {
-        $this->getRealization()->setSize();
+        $this->realization->setSize();
         $this->doCommonLogic();
     }
 }
