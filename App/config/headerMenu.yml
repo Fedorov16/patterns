@@ -17,6 +17,7 @@ Structural:
   facade: Facade
   bridge: Bridge
   composite: Composite
+  decorator: Decorator
 Behavioral:
   strategy/easy: Strategy
   specification: Specification

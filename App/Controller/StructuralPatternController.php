@@ -69,4 +69,10 @@ class StructuralPatternController
         $composite = new Composite();
         $composite->run();
     }
+
+    #[Route('/decorator', name: 'decorator')]
+    public function decorator(): void
+    {
+        InfoRender::showInfo('Decorator', 'https://refactoring.guru/ru/design-patterns/decorator');
+    }
 }
