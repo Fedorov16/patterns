@@ -8,6 +8,7 @@
         "ext-simplexml": "*",
         "doctrine/annotations": "1.*",
         "doctrine/cache": "1.*",
+        "guzzlehttp/guzzle": "^7.0",
         "spatie/array-to-xml": "^3.1",
         "symfony/config": "5.*",
         "symfony/framework-bundle": "5.*",

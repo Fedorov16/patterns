@@ -16,6 +16,8 @@ use App\Pattern\Structural\Decorator\SlackNotifier;
 use App\Pattern\Structural\Decorator\TelegramDecorator;
 use App\Pattern\Structural\Decorator\WhatsUpDecorator;
 use App\Pattern\Structural\Facade\MediaFacade;
+use App\Pattern\Structural\Proxy\Character;
+use App\Pattern\Structural\Proxy\ProxyCharacter;
 use Symfony\Component\Routing\Annotation\Route;
 
 class StructuralPatternController
@@ -89,5 +91,19 @@ class StructuralPatternController
 
         $decorator = (new WhatsUpDecorator(new TelegramDecorator(new SlackNotifier())));
         $decorator->notify('General Decorator new message');
+    }
+
+    #[Route('/proxy', name: 'proxy')]
+    public function proxy(): void
+    {
+        InfoRender::showInfo('Proxy', 'https://refactoring.guru/ru/design-patterns/proxy');
+
+        $character = new Character();
+        $characterName = $character->getCharacterName(823);
+        dump($characterName);
+
+        $proxyCharacter = new ProxyCharacter($character);
+        $proxyCharacterName = $proxyCharacter->getCharacterName(583);
+        dump($proxyCharacterName);
     }
 }
