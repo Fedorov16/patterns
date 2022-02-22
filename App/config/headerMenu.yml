@@ -18,6 +18,7 @@ Structural:
   bridge: Bridge
   composite: Composite
   decorator: Decorator
+  proxy: Proxy
 Behavioral:
   strategy/easy: Strategy
   specification: Specification
