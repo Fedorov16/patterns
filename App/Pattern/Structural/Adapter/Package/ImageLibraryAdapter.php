@@ -15,11 +15,11 @@ class ImageLibraryAdapter implements ImageLibraryInterface
 
     public function upload(string $path): string
     {
-        return $this->imageLibraryPackage->uploadImage('Image');
+        return $this->imageLibraryPackage->uploadImage($path);
     }
 
     public function get(string $fileCode): string
     {
-        return $this->imageLibraryPackage->getImage('Image');
+        return $this->imageLibraryPackage->getImage($fileCode);
     }
 }

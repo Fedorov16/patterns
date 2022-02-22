@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Pattern\Structural\Adapter\Package\ImageLibrary;
 use App\Pattern\Structural\Adapter\Package\ImageLibraryAdapter;
 use App\Pattern\Structural\Adapter\Response\JsonCustomResponse;
 use App\Pattern\Structural\Adapter\Response\XmlCustomResponse;
@@ -11,6 +12,9 @@ use App\Pattern\Structural\Adapter\Response\XmlJsonCustomResponseAdapter;
 use App\Pattern\Structural\Bridge\WithBridge\WithBridge;
 use App\Pattern\Structural\Bridge\WithNoBridge\WithoutBridge;
 use App\Pattern\Structural\Composite\Composite;
+use App\Pattern\Structural\Decorator\SlackNotifier;
+use App\Pattern\Structural\Decorator\TelegramDecorator;
+use App\Pattern\Structural\Decorator\WhatsUpDecorator;
 use App\Pattern\Structural\Facade\MediaFacade;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -74,5 +78,16 @@ class StructuralPatternController
     public function decorator(): void
     {
         InfoRender::showInfo('Decorator', 'https://refactoring.guru/ru/design-patterns/decorator');
+        $slackNotifier = new SlackNotifier();
+        $slackNotifier->notify('Only Slack New message');
+
+        $decorator = new TelegramDecorator(new SlackNotifier());
+        $decorator->notify('Telegram Decorator new message');
+
+        $decorator = new WhatsUpDecorator(new SlackNotifier());
+        $decorator->notify('WhatsUp Decorator new message');
+
+        $decorator = (new WhatsUpDecorator(new TelegramDecorator(new SlackNotifier())));
+        $decorator->notify('General Decorator new message');
     }
 }
