@@ -6,7 +6,7 @@ namespace App\Pattern\Behavioral\ChainOfResponsibility;
 
 class ChainOfResponsibility
 {
-    public static function run()
+    public static function run(): void
     {
         dump('Creating chain');
         $middleWar = new AuthHandler();
@@ -16,6 +16,6 @@ class ChainOfResponsibility
             ->linkWith(new TimeHandler());
 
         dump($middleWar);
-//        $middleWar->check();
+        $middleWar->check();
     }
 }
