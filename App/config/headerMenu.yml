@@ -20,6 +20,7 @@ Structural:
   decorator: Decorator
   proxy: Proxy
 Behavioral:
+  chain_of_responsibility: Chain of Responsibility
   strategy/easy: Strategy
   specification: Specification
 

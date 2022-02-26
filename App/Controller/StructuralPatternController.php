@@ -15,7 +15,9 @@ use App\Pattern\Structural\Composite\Composite;
 use App\Pattern\Structural\Decorator\SlackNotifier;
 use App\Pattern\Structural\Decorator\TelegramDecorator;
 use App\Pattern\Structural\Decorator\WhatsUpDecorator;
+use App\Pattern\Structural\Facade\ImagePackage\ImagePackage;
 use App\Pattern\Structural\Facade\MediaFacade;
+use App\Pattern\Structural\Facade\VideoPackage\VideoPackage;
 use App\Pattern\Structural\Proxy\Character;
 use App\Pattern\Structural\Proxy\ProxyCharacter;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +47,7 @@ class StructuralPatternController
     public function facade(): void
     {
         InfoRender::showInfo('Facade', 'https://refactoring.guru/ru/design-patterns/facade');
-        $media = new MediaFacade();
+        $media = new MediaFacade(new ImagePackage(), new VideoPackage());
         $media->uploadImage('nameOfImage');
         $media->uploadVideo('nameOfVideo');
 
@@ -60,8 +62,8 @@ class StructuralPatternController
     {
         InfoRender::showInfo('Bridge', 'https://refactoring.guru/ru/design-patterns/bridge');
 
-        $withoutBridge = new WithoutBridge();
-        $withoutBridge->run();
+//        $withoutBridge = new WithoutBridge();
+//        $withoutBridge->run();
 
         $bridge = new WithBridge();
         $bridge->run();

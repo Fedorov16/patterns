@@ -17,7 +17,9 @@ abstract class ImageAbstract
     public function doCommonLogic(): void
     {
         dump(sprintf(
-            'Class %s, ShadowColor: %s, Size: %d',
+            'Class %s, 
+            ShadowColor: %s, 
+            Size: %d',
             get_class($this),
             $this->image->getShadowColor(),
             $this->image->getSize()

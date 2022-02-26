@@ -56,4 +56,12 @@ class BehavioralPatternController
 
         dump($customer);
     }
+
+    #[Route('/chain_of_responsibility', name: 'chain_of_responsibility')]
+    public function chainOfResponsibility(): void
+    {
+        InfoRender::showInfo('Chain of Responsibility', 'https://refactoring.guru/ru/design-patterns/chain-of-responsibility');
+        //        App/kernel.php:27
+        dump('We are in the controller');
+    }
 }

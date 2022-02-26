@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Controller\ErrorController;
 use App\Controller\HeaderMenu;
+use App\Pattern\Behavioral\ChainOfResponsibility\ChainOfResponsibility;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Routing\AnnotatedRouteControllerLoader;
 use Symfony\Component\Config\FileLocator;
@@ -23,7 +24,7 @@ $context = RequestContext::fromUri($_SERVER['REQUEST_URI']);
 $matcher = new UrlMatcher($routes, $context);
 
 HeaderMenu::render();
-
+//ChainOfResponsibility::run();
 try {
     $matcherData = $matcher->match($context->getBaseUrl());
 } catch (\Exception $e) {
