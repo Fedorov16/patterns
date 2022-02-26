@@ -14,8 +14,8 @@ class WithBridge
         $jpeg = new Jpeg();
         $realization = new JpegRealization($jpeg);
 
-        $png = new Png();
-        $realization = new PngRealization($png);
+//        $png = new Png();
+//        $realization = new PngRealization($png);
 
         $handlerAbstraction = new Handler($realization);
         $handlerAbstraction->run();
