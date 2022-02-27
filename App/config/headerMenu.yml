@@ -23,4 +23,9 @@ Behavioral:
   chain_of_responsibility: Chain of Responsibility
   strategy/easy: Strategy
   specification: Specification
-
+SOLID:
+  single_responsibility: Single responsibility
+  open-closed: Open-closed
+  liskov_substitution: Liskov substitution
+  interface_segregation: Interface segregation
+  dependency_inversion: Dependency Inversion
