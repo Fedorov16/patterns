@@ -8,7 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class HeaderMenu
 {
-    private const YAML_PATH = '/../config/headerMenu.yml';
+    private const YAML_PATH = '/../../config/headerMenu.yml';
 
     public static function render(): void
     {

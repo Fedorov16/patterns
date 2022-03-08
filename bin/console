@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace App;
+
+use App\Command\AbstractCommand;
+use ReflectionClass;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+try {
+    unset($argv[0]);
+
+    $className = 'App\\Command\\' . array_shift($argv);
+    if (!class_exists($className)) {
+        throw new \Exception("Class $className not found \n");
+    }
+
+//    $obj = new ReflectionClass($className);
+//    if (!$obj->isSubclassOf(AbstractCommand::class)) {
+//        throw new \Exception($className . " not extend AbstractCommand \n");
+//    }
+
+    $params = [];
+    foreach ($argv as $argument) {
+        preg_match('/^--(.+)=(.+)$/', $argument, $matches);
+        if (!empty($matches)) {
+            $paramName = $matches[1];
+            $paramValue = $matches[2];
+
+            $params[$paramName] = $paramValue;
+        }
+    }
+
+    $class = new $className($params);
+    $intKey = $class->execute();
+    if ($intKey) {
+        throw new \Exception("Command ended with key = $intKey \n");
+    }
+} catch (\Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}
