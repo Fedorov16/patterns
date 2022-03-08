@@ -1,3 +1,3 @@
 <?php
 require '../vendor/autoload.php';
-require_once '../App/kernel.php';
+require_once '../kernel.php';

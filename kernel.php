@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App;
+
 use App\Controller\ErrorController;
 use App\Controller\HeaderMenu;
 use App\Pattern\Behavioral\ChainOfResponsibility\ChainOfResponsibility;
@@ -13,13 +15,12 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 
 $loader = new AnnotationDirectoryLoader(
-    new FileLocator(__DIR__ . '/Controller/'),
+    new FileLocator(__DIR__ . '/src/Controller/'),
     new AnnotatedRouteControllerLoader(
         new AnnotationReader()
     )
 );
-
-$routes = $loader->load(__DIR__ . '/Controller/');
+$routes = $loader->load(__DIR__ . '/src/Controller/');
 $context = RequestContext::fromUri($_SERVER['REQUEST_URI']);
 $matcher = new UrlMatcher($routes, $context);
 
