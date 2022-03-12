@@ -9,6 +9,8 @@ use App\Pattern\Behavioral\Iterator\GameData;
 use App\Pattern\Behavioral\Iterator\GameIterator;
 use App\Pattern\Behavioral\Iterator\GameIteratorAggregate;
 use App\Pattern\Behavioral\Iterator\RecursiveIterator;
+use App\Pattern\Behavioral\Mediator\Messenger;
+use App\Pattern\Behavioral\Mediator\User;
 use App\Pattern\Behavioral\Specification\Customer;
 use App\Pattern\Behavioral\Specification\CustomerCountry;
 use App\Pattern\Behavioral\Specification\CustomerIsMatch;
@@ -113,5 +115,18 @@ class BehavioralPatternController
 //        }
 
 
+    }
+
+    #[Route('/mediator', name: 'mediator')]
+    public function mediator(): void
+    {
+        InfoRender::showInfo('Mediator', 'https://refactoring.guru/ru/design-patterns/mediator');
+        $messenger = new Messenger();
+
+        $sergeyUser = new User('Sergey', $messenger);
+        $alexUser = new User('Alex', $messenger);
+
+        $sergeyUser->sendMessage('Hey, Lesha');
+        $alexUser->sendMessage('Hi, Sergey');
     }
 }

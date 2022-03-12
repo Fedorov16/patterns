@@ -24,6 +24,7 @@ Behavioral:
   strategy/easy: Strategy
   command: Command
   iterator: Iterator
+  mediator: Mediator
   specification: Specification
 
 SOLID:
