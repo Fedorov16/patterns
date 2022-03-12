@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Pattern\Behavioral\Iterator\DirectoryIterator;
+use App\Pattern\Behavioral\Iterator\GameData;
+use App\Pattern\Behavioral\Iterator\GameIterator;
+use App\Pattern\Behavioral\Iterator\GameIteratorAggregate;
+use App\Pattern\Behavioral\Iterator\RecursiveIterator;
 use App\Pattern\Behavioral\Specification\Customer;
 use App\Pattern\Behavioral\Specification\CustomerCountry;
 use App\Pattern\Behavioral\Specification\CustomerIsMatch;
@@ -70,5 +75,43 @@ class BehavioralPatternController
     {
         InfoRender::showInfo('Command', 'https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)');
         //        bin/console
+    }
+
+    #[Route('/iterator', name: 'iterator')]
+    public function iterator(): void
+    {
+        /** @link https://habr.com/ru/post/324934/ */
+        InfoRender::showInfo('Iterator', 'https://refactoring.guru/ru/design-patterns/iterator');
+        $gameSetting = new GameData();
+        $array = $gameSetting->getSimpleArray();
+        $result = [];
+        $iterator = new GameIterator($array);
+//        $iterator = new GameIteratorAggregate($array);
+        foreach ($iterator as $key => $item) {
+            $result[$key] = $item;
+        }
+        dump($result);
+
+//        $directoryIterator = new DirectoryIterator(__DIR__);
+////        $directoryIterator = new DirectoryIterator('/var/www/html/src/');
+//        foreach ($directoryIterator as $file) {
+//            if (!$file->isDir()) {
+//                dump($file->getFilename());
+//            }
+//        }
+
+//        $iterator = new RecursiveIterator($array);
+//        $recursive = $iterator->getIterator();
+//        while ($recursive->valid()) {
+//            if ($recursive->hasChildren()) {
+//                foreach ($recursive->getChildren() as $key => $value) {
+//                    $string = "$key => $value";
+//                    dump($string);
+//                }
+//            }
+//            $recursive->next();
+//        }
+
+
     }
 }

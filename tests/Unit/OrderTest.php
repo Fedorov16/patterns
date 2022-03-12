@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class OrderTest extends TestCase
 {
-    public function testOrderPrice()
+    public function testOrderPrice(): void
     {
         $product1 = new Product();
         $product1->setPrice(53);

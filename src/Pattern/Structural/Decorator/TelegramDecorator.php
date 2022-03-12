@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Decorator;
 
-Class TelegramDecorator implements SlackNotifierDecoratorInterface
+Class TelegramDecorator implements NotifierInterface
 {
     public function __construct(
-        private readonly SlackNotifierDecoratorInterface $decorator
+        private readonly NotifierInterface $decorator
     ) {}
 
     public function notify(string $string): void

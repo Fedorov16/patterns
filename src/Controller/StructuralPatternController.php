@@ -90,7 +90,7 @@ class StructuralPatternController
 
         $decorator = new WhatsUpDecorator(new SlackNotifier());
         $decorator->notify('WhatsUp Decorator new message');
-
+//
         $decorator = (new WhatsUpDecorator(new TelegramDecorator(new SlackNotifier())));
         $decorator->notify('General Decorator new message');
     }

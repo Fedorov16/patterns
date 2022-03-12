@@ -23,6 +23,7 @@ Behavioral:
   chain_of_responsibility: Chain of Responsibility
   strategy/easy: Strategy
   command: Command
+  iterator: Iterator
   specification: Specification
 
 SOLID:
