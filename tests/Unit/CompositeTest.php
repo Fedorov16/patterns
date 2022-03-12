@@ -10,7 +10,7 @@ use ReflectionMethod;
 
 class CompositeTest extends TestCase
 {
-    public function testGetProductsMethod()
+    public function testGetProductsMethod(): void
     {
         $composite = new Composite();
         $reflection = new ReflectionMethod($composite, "getProducts");
@@ -18,7 +18,7 @@ class CompositeTest extends TestCase
         $this->assertIsArray($getProductsMethod);
     }
 
-    public function testRunCompositeTest()
+    public function testRunCompositeTest(): void
     {
         $composite = new Composite();
         $this->assertIsInt($composite->run());

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Pattern\Structural\Decorator;
 
-Class WhatsUpDecorator implements SlackNotifierDecoratorInterface
+Class WhatsUpDecorator implements NotifierInterface
 {
     public function __construct(
-        private readonly SlackNotifierDecoratorInterface $decorator
+        private readonly NotifierInterface $decorator
     ) {}
 
     public function notify(string $string): void
