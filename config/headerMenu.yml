@@ -25,6 +25,7 @@ Behavioral:
   command: Command
   iterator: Iterator
   mediator: Mediator
+  observer: Observer
   specification: Specification
 
 SOLID:
