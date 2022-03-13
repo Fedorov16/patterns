@@ -11,6 +11,9 @@ use App\Pattern\Behavioral\Iterator\GameIteratorAggregate;
 use App\Pattern\Behavioral\Iterator\RecursiveIterator;
 use App\Pattern\Behavioral\Mediator\Messenger;
 use App\Pattern\Behavioral\Mediator\User;
+use App\Pattern\Behavioral\Observer\GameSubject;
+use App\Pattern\Behavioral\Observer\Informator;
+use App\Pattern\Behavioral\Observer\LoggerObserver;
 use App\Pattern\Behavioral\Specification\Customer;
 use App\Pattern\Behavioral\Specification\CustomerCountry;
 use App\Pattern\Behavioral\Specification\CustomerIsMatch;
@@ -128,5 +131,22 @@ class BehavioralPatternController
 
         $sergeyUser->sendMessage('Hey, Lesha');
         $alexUser->sendMessage('Hi, Sergey');
+    }
+
+    #[Route('/observer', name: 'observer')]
+    public function observer(): void
+    {
+        InfoRender::showInfo('Observer', 'https://refactoring.guru/ru/design-patterns/observer/php/example');
+        //Different from Event Channel
+        /** @link https://webdevblog.ru/v-chem-raznica-mezhdu-shablonami-observer-i-pub-sub/#:~:text=%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D0%BD%D0%BE%20%D1%82%D0%B0%D0%BA%D0%B8%D0%BC%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC%3A-,Image,-source%3A%C2%A0developers%2Dclub */
+
+        $subject = new GameSubject();
+        $loggerObserver = new LoggerObserver();
+        $informator = new Informator();
+
+        $subject->attach($loggerObserver);
+        $subject->attach($informator);
+//        $subject->detach($informator);
+        $subject->send(['id' => 55, 'name' => 'Witcher', 'action' => 'I']);
     }
 }
