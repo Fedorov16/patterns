@@ -26,6 +26,7 @@ Behavioral:
   iterator: Iterator
   mediator: Mediator
   observer: Observer
+  state: State
   specification: Specification
 
 SOLID:

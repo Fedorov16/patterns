@@ -19,6 +19,10 @@ use App\Pattern\Behavioral\Specification\CustomerCountry;
 use App\Pattern\Behavioral\Specification\CustomerIsMatch;
 use App\Pattern\Behavioral\Specification\CustomerLevel;
 use App\Pattern\Behavioral\Specification\Specification\AndSpecification;
+use App\Pattern\Behavioral\State\Context;
+use App\Pattern\Behavioral\State\Document;
+use App\Pattern\Behavioral\State\StateDraft;
+use App\Pattern\Behavioral\State\StateFactory;
 use App\Pattern\Behavioral\Strategy\GameSetting;
 use App\Pattern\Behavioral\Strategy\StrategyFactory;
 use Symfony\Component\Routing\Annotation\Route;
@@ -148,5 +152,22 @@ class BehavioralPatternController
         $subject->attach($informator);
 //        $subject->detach($informator);
         $subject->send(['id' => 55, 'name' => 'Witcher', 'action' => 'I']);
+    }
+
+    #[Route('/state', name: 'state')]
+    public function state(): void
+    {
+        InfoRender::showInfo('State', 'https://refactoring.guru/ru/design-patterns/state');
+        $document = new Document();
+//        $document->publish()->publish();
+//        $document->publish2('policy')->publish2('policy');
+
+        $state = 'draft';
+        $role = 'admin';
+        $stateFactory = StateFactory::get($state);
+
+        $context = new Context($stateFactory);
+        $context->publish($role);
+        dump($context->getStatus());
     }
 }

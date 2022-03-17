@@ -8,7 +8,7 @@ class ChainOfResponsibility
 {
     public static function run(): void
     {
-        dump('Creating chain');
+        dump('Creating of chain');
         $middleWar = new AuthHandler();
         $middleWar
             ->linkWith(new UserRolesHandler())
