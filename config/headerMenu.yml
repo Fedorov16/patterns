@@ -28,6 +28,7 @@ Behavioral:
   observer: Observer
   state: State
   memento: Memento
+  template_method: Template Method
   specification: Specification
 
 SOLID:
