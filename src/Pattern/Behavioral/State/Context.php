@@ -15,6 +15,12 @@ class Context
         $this->setState($state);
     }
 
+    public function setState(AbstractState $state): void
+    {
+        $this->state = $state;
+        $this->state->setContext($this);
+    }
+
     public function getStatus(): string
     {
         return $this->status;
@@ -23,12 +29,6 @@ class Context
     public function setStatus(string $status): void
     {
         $this->status = $status;
-    }
-
-    public function setState(AbstractState $state): void
-    {
-        $this->state = $state;
-        $this->state->setContext($this);
     }
 
     public function publish(string $role): self

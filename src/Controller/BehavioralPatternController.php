@@ -27,6 +27,9 @@ use App\Pattern\Behavioral\State\StateDraft;
 use App\Pattern\Behavioral\State\StateFactory;
 use App\Pattern\Behavioral\Strategy\GameSetting;
 use App\Pattern\Behavioral\Strategy\StrategyFactory;
+use App\Pattern\Behavioral\TemplateMethod\TelegramMessenger;
+use App\Pattern\Behavioral\TemplateMethod\ViberMessenger;
+use App\Pattern\Behavioral\TemplateMethod\ViberObject;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BehavioralPatternController
@@ -38,7 +41,7 @@ class BehavioralPatternController
         $strategy = StrategyFactory::build($levelDifficult);
         $gameSetting = new GameSetting($strategy);
         $score = $gameSetting->scoreFight();
-        dump(sprintf('level: %s score: %d',$levelDifficult, $score));
+        dump(sprintf('level: %s score: %d', $levelDifficult, $score));
     }
 
     #[Route('/specification', name: 'specification')]
@@ -65,8 +68,7 @@ class BehavioralPatternController
         //3 decision Specification
         $customerIsMatch = new CustomerIsMatch();
 //
-        if ($customerIsMatch->isSatisfiedBy($customer))
-        {
+        if ($customerIsMatch->isSatisfiedBy($customer)) {
             $customer->setMatchLevel(true);
         }
 
@@ -194,5 +196,16 @@ class BehavioralPatternController
         $mementos = $careTaker->getMementos();
 //        $mementos = $careTaker->showAllMementosAsArray();
         dump($mementos);
+    }
+
+    #[Route('/template_method', name: 'templateMethod')]
+    public function templateMethod(): void
+    {
+        InfoRender::showInfo('Template Method', 'https://refactoring.guru/ru/design-patterns/template-method');
+        $telegram = new TelegramMessenger(['sergey', 'Telegram message']);
+        $telegram->sendMessage();
+
+        $telegram = new ViberMessenger(new ViberObject());
+        $telegram->sendMessage();
     }
 }
