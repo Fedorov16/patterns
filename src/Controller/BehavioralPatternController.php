@@ -11,6 +11,8 @@ use App\Pattern\Behavioral\Iterator\GameIteratorAggregate;
 use App\Pattern\Behavioral\Iterator\RecursiveIterator;
 use App\Pattern\Behavioral\Mediator\Messenger;
 use App\Pattern\Behavioral\Mediator\User;
+use App\Pattern\Behavioral\Memento\CareTaker;
+use App\Pattern\Behavioral\Memento\Originator;
 use App\Pattern\Behavioral\Observer\GameSubject;
 use App\Pattern\Behavioral\Observer\Informator;
 use App\Pattern\Behavioral\Observer\LoggerObserver;
@@ -169,5 +171,28 @@ class BehavioralPatternController
         $context = new Context($stateFactory);
         $context->publish($role);
         dump($context->getStatus());
+    }
+
+    #[Route('/memento', name: 'memento')]
+    public function memento(): void
+    {
+        InfoRender::showInfo('Memento', 'https://refactoring.guru/ru/design-patterns/memento');
+
+        $originator = new Originator('Sergey', 'The best way to learn PHP is practice');
+        $careTaker = new CareTaker($originator);
+
+        $careTaker->save();
+
+        $originator->setStringData('Alex', 'The best way to learn PHP is to Lead Team and Learn Java');
+        $careTaker->save();
+
+        $originator->setStringData('Natasha', 'The best way for PHP - not to use the PHP');
+        $careTaker->save();
+
+//        $careTaker->backUp();
+
+        $mementos = $careTaker->getMementos();
+//        $mementos = $careTaker->showAllMementosAsArray();
+        dump($mementos);
     }
 }
