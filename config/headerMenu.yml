@@ -27,6 +27,7 @@ Behavioral:
   mediator: Mediator
   observer: Observer
   state: State
+  memento: Memento
   specification: Specification
 
 SOLID:
