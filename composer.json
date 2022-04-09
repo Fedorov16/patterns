@@ -5,17 +5,18 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "ext-pdo": "*",
         "ext-simplexml": "*",
         "doctrine/annotations": "1.*",
         "doctrine/cache": "1.*",
         "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/psr7": "^2.2",
         "spatie/array-to-xml": "^3.1",
         "symfony/config": "5.*",
         "symfony/framework-bundle": "5.*",
         "symfony/routing": "5.*",
         "symfony/yaml": "^6.0",
-        "twig/twig": "^3.3",
-        "ext-pdo": "*"
+        "twig/twig": "^3.3"
     }
     ,
     "require-dev": {
