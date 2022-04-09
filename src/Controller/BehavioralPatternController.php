@@ -30,6 +30,11 @@ use App\Pattern\Behavioral\Strategy\StrategyFactory;
 use App\Pattern\Behavioral\TemplateMethod\TelegramMessenger;
 use App\Pattern\Behavioral\TemplateMethod\ViberMessenger;
 use App\Pattern\Behavioral\TemplateMethod\ViberObject;
+use App\Pattern\Behavioral\Visitor\Entity\Campaign;
+use App\Pattern\Behavioral\Visitor\Entity\Material;
+use App\Pattern\Behavioral\Visitor\Entity\Product;
+use App\Pattern\Behavioral\Visitor\InfoVisitor;
+use App\Pattern\Behavioral\Visitor\NameVisitor;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BehavioralPatternController
@@ -207,5 +212,42 @@ class BehavioralPatternController
 
         $telegram = new ViberMessenger(new ViberObject());
         $telegram->sendMessage();
+    }
+
+    #[Route('/visitor', name: 'visitor')]
+    public function visitor(): void
+    {
+        InfoRender::showInfo('Visitor', 'https://refactoring.guru/ru/design-patterns/visitor');
+
+        $product = new Product();
+        $product
+            ->setId(1)
+            ->setCode(465)
+            ->setName('First product');
+
+        $campaign = new Campaign();
+        $campaign
+            ->setId(2)
+            ->setTitle('Second Campaign');
+
+        $material = new Material();
+        $material
+            ->setId(3)
+            ->setPrice(53)
+            ->setIconName('Material Icon');
+
+        $visitor = new InfoVisitor();
+
+        $resultProduct = $product->accept($visitor);
+        $resultCampaign = $campaign->accept($visitor);
+        $resultMaterial = $material->accept($visitor);
+
+        dump($resultProduct, $resultCampaign, $resultMaterial);
+
+//        $visitor = new NameVisitor();
+//        $resultProduct = $product->accept($visitor);
+//        $resultCampaign = $campaign->accept($visitor);
+//        $resultMaterial = $material->accept($visitor);
+//        dump($resultProduct, $resultCampaign, $resultMaterial);
     }
 }

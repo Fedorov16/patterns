@@ -21,14 +21,15 @@ Structural:
   proxy: Proxy
 Behavioral:
   chain_of_responsibility: Chain of Responsibility
-  strategy/easy: Strategy
   command: Command
   iterator: Iterator
+  strategy/easy: Strategy
   mediator: Mediator
   observer: Observer
   state: State
   memento: Memento
   template_method: Template Method
+  visitor: Visitor
   specification: Specification
 
 SOLID:
